@@ -74,7 +74,7 @@ app.use(helmet.xssFilter());
 // instructing the browser to not bypass the provided `Content-Type`.
 
 // Use `helmet.noSniff()`
-
+app.use(helmet.noSniff());
 /** 6) Prevent IE from opening *untrusted* HTML - `helmet.ieNoOpen()` */
 
 // Some web applications will serve untrusted HTML for download. By default,
@@ -85,7 +85,7 @@ app.use(helmet.xssFilter());
 // to prevent IE users from executing downloads in the *trusted* site's context.
 
 // Use `helmet.ieNoOpen()`
-
+app.use(helmet.ieNoOpen());
 /**  7) Ask browsers to access your site via HTTPS only - `helmet.hsts()` */
 
 // HTTP Strict Transport Security (HSTS) is a web security policy mechanism which
@@ -103,7 +103,7 @@ app.use(helmet.xssFilter());
 // policy we will intercept and restore the header, after inspecting it for testing.
 
 var ninetyDaysInMilliseconds = 90 * 24 * 60 * 60 * 1000;
-
+app.use(helmet.hsts({ maxAge: ninetyDaysInMilliseconds }));
 //**Note**:
 // Configuring HTTPS on a custom website requires the acquisition of a domain,
 // and a SSL/TSL Certificate.
@@ -120,7 +120,7 @@ var ninetyDaysInMilliseconds = 90 * 24 * 60 * 60 * 1000;
 // DNS prefetching, at the cost of a performance penalty.
 
 // Use `helmet.dnsPrefetchControl()`
-
+app.use(helmet.dnsPrefetchControl());
 /** 9) Disable Client-Side Caching - `helmet.noCache()` */
 
 // If you are releasing an update for your website, and you want your users
@@ -130,6 +130,7 @@ var ninetyDaysInMilliseconds = 90 * 24 * 60 * 60 * 1000;
 // use this option only when there is a real need.
 
 // Use helmet.noCache()
+app.use(helmet.noCache());
 
 /** 10) Content Security Policy - `helmet.contentSecurityPolicy()` */
 
@@ -183,6 +184,14 @@ var ninetyDaysInMilliseconds = 90 * 24 * 60 * 60 * 1000;
 // We introduced each middleware separately, for teaching purpose, and for
 // ease of testing. Using the 'parent' `helmet()` middleware is easiest, and
 // cleaner, for a real project.
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'trusted-cdn.com']
+    }
+  })
+);
 
 // ---- DO NOT EDIT BELOW THIS LINE ---------------------------------------
 
