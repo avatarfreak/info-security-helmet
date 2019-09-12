@@ -1,0 +1,32 @@
+{
+  "name": "pgt-info-security-helmet",
+  "version": "1.0.0",
+  "description": "fcc project on information and security with helmemt js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avatarfreak/info-security-helmet.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "helmet",
+    "fcc",
+    "es6",
+    "html"
+  ],
+  "author": "Avatarfreak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avatarfreak/info-security-helmet/issues"
+  },
+  "homepage": "https://github.com/avatarfreak/info-security-helmet#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^3.21.0"
+  }
+}
