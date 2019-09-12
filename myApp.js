@@ -28,7 +28,7 @@ const helmet = require("helmet");
 // people off. e.g. `helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' })`
 
 // Use `helmet.hidePoweredBy()``
-app.use(helmet.hidePoweredBy())
+app.use(helmet.hidePoweredBy());
 /** 3) Mitigate the risk of clickjacking - `helmet.frameguard()` */
 
 // Your page could be put in a <frame> or <iframe> without your consent.
@@ -38,7 +38,7 @@ app.use(helmet.hidePoweredBy())
 // happens using another page put over the framed original, in a transparent layer.
 // The `X-Frame-Options` header set by this middleware restricts who can put
 // your site in a frame. It has three modes: DENY, SAMEORIGIN, and ALLOW-FROM.
-
+app.use(helmet.frameguard({ action: "deny" }));
 // We don't need our app to be framed, so you should use `helmet.frameguard()`
 // passing to it the configuration object `{action: 'deny'}`
 
@@ -62,6 +62,7 @@ app.use(helmet.hidePoweredBy())
 // It still has limited support.
 
 // Use `helmet.xssFilter()`
+app.use(helmet.xssFilter());
 
 /** 5) Avoid inferring the response MIME type - `helmet.noSniff()` */
 
