@@ -195,7 +195,12 @@ app.use(helmet.hsts({ maxAge: ninetyDaysInMilliseconds }));
 - ease of testing. Using the 'parent' `helmet()` middleware is easiest, and
 - cleaner, for a real project.
 
-### Link
+## BCrypt
+
+- Hash and Compare Passwords Asynchronously
+- Hash and Compare Passwords synchronously
+
+## Link
 
 FreecodeCamp
 
